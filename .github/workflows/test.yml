@@ -27,7 +27,6 @@ jobs:
     steps:
     - name: verify mysql from container
       run: |
-        apt-get update
         apt-get install -y mysql-client
         mysql --host mydb -uroot -prootpw -e "SHOW DATABASES" 
     - uses: actions/checkout@v2
