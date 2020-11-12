@@ -26,6 +26,9 @@ jobs:
           MYSQL_PASSWORD: stanpw
 
     steps:
+    - name: start mysql
+      run: |
+        sudo /etc/init.d/mysql start
     - name: verify mysql from container
       run: |
         mysql -P 3306 -uroot -prootpw -e "SHOW DATABASES" 
