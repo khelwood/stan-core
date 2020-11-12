@@ -48,8 +48,8 @@ jobs:
       env:
         MYSQL_PORT: "${{ job.services.mysql.ports['3306'] }}"
         MYSQL_HOST: localhost
-        MYSQL_RW_USER: stana
+        MYSQL_RW_USER: stan
         MYSQL_RW_PASSWORD: stanpw
-        MYSQL_ADMIN_USER: stanb
+        MYSQL_ADMIN_USER: stan
         MYSQL_ADMIN_PASSWORD: stanpw
         MYSQL_DATABASE: stantest
