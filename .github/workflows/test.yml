@@ -29,6 +29,10 @@ jobs:
     - name: start mysql
       run: |
         sudo /etc/init.d/mysql start
+    - name: wait 10s for service
+      uses: jakejarvis/wait-action@v0.1.0
+      with:
+        time: '10s'
     - name: verify mysql from container
       run: |
         mysql -h 127.0.0.1 -P $MYSQL_PORT -uroot -prootpw -e "SHOW DATABASES"
