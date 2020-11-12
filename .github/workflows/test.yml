@@ -21,6 +21,7 @@ jobs:
           - 3306
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: ""
           MYSQL_DATABASE: stantest
           MYSQL_USER: stan
           MYSQL_PASSWORD: stanpw
@@ -32,7 +33,7 @@ jobs:
     - name: wait for service
       uses: jakejarvis/wait-action@v0.1.0
       with:
-        time: '10s'
+        time: '60s'
     - name: verify mysql from container
       run: |
         mysql -h localhost -P 3306 -uroot -e "SHOW DATABASES" 
