@@ -20,6 +20,8 @@ jobs:
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_DATABASE: stantest
+          MYSQL_USER: "stan"
+          MYSQL_PASSWORD: "stanpw"
           ports: 3306
 
     steps:
