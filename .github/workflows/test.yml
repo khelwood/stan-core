@@ -21,7 +21,6 @@ jobs:
           - 3306
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_ROOT_PASSWORD: ""
           MYSQL_DATABASE: stantest
           MYSQL_USER: stan
           MYSQL_PASSWORD: stanpw
@@ -33,10 +32,12 @@ jobs:
     - name: wait for service
       uses: jakejarvis/wait-action@v0.1.0
       with:
-        time: '60s'
+        time: '10s'
     - name: verify mysql from container
       run: |
-        mysql -h localhost -P 3306 -uroot -e "SHOW DATABASES" 
+        mysql -h 127.0.0.1 -P $PORT -uroot -e "SHOW DATABASES"
+      env:
+        PORT: "${{ job.services.mysql.ports['3306'] }}"
     - uses: actions/checkout@v2
     - name: Set up Java 11
       uses: actions/setup-java@v1
