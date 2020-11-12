@@ -16,18 +16,19 @@ jobs:
     
     services:
       mysql:
-        image: mysql:8.0.1
+        image: mysql:8.0
+        ports:
+          - 3306
         env:
           MYSQL_ROOT_PASSWORD: rootpw
           MYSQL_DATABASE: stantest
-          MYSQL_USER: "stan"
-          MYSQL_PASSWORD: "stanpw"
-          ports: 3306
+          MYSQL_USER: stan
+          MYSQL_PASSWORD: stanpw
 
     steps:
     - name: verify mysql from container
       run: |
-        mysql -uroot -prootpw -e "SHOW DATABASES" 
+        mysql -P 3306 -uroot -prootpw -e "SHOW DATABASES" 
     - uses: actions/checkout@v2
     - name: Set up Java 11
       uses: actions/setup-java@v1
