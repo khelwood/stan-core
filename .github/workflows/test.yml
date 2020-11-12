@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     
     services:
-      mydb:
+      mysql:
         image: mysql:8.0.1
         env:
           MYSQL_ROOT_PASSWORD: rootpw
@@ -27,7 +27,7 @@ jobs:
     steps:
     - name: verify mysql from container
       run: |
-        mysql --host mydb -uroot -prootpw -e "SHOW DATABASES" 
+        mysql -uroot -prootpw -e "SHOW DATABASES" 
     - uses: actions/checkout@v2
     - name: Set up Java 11
       uses: actions/setup-java@v1
